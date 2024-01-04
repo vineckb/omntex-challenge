@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('contact_types', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->string('title');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
