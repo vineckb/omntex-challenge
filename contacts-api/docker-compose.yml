@@ -1,32 +1,22 @@
 version: "2"
 
 services:
-    postgres:
-        image: postgres:13
-        volumes:
-            - postgres_volume:/var/lib/postgresql/data
-            - ./dockerConfig/postgres-dev-init.sql:/docker-entrypoint-initdb.d/init.sql
+    mariadb:
+        image: docker.io/bitnami/mariadb:11.2
         environment:
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-        ports:
-            - 5433:5432
-
+            - ALLOW_EMPTY_PASSWORD=yes
+            - MARIADB_USER=bn_myapp
+            - MARIADB_DATABASE=bitnami_myapp
     myapp:
-        build: .
+        image: docker.io/bitnami/laravel:10
         ports:
             - "8000:8000"
         environment:
-            - DB_CONNECTION=pgsql
-            - DB_HOST=postgres
-            - DB_PORT=5432
-            - DB_USERNAME=laravel
-            - DB_PASSWORD=laravel
-            - DB_DATABASE=laravel_app
+            - DB_HOST=mariadb
+            - DB_PORT=3306
+            - DB_USERNAME=bn_myapp
+            - DB_DATABASE=bitnami_myapp
         volumes:
-            - "./:/var/www/html"
+            - "./:/app"
         depends_on:
-            - postgres
-
-volumes:
-    postgres_volume:
+            - mariadb
