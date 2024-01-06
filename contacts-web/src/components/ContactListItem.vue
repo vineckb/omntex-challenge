@@ -4,29 +4,34 @@
     variant="plain"
     @click="$router.push(`/contact/${item.id}`)"
   >
-    <template v-slot:prepend>
-      <v-icon
-        size="30"
-        style="margin: 0 5px"
-        icon="mdi-account"
+    <v-list-item-title>
+      <app-avatar
+        :name="item.title"
+        :size="30"
+        style="margin-right: 10px"
         class="person-avatar"
-      ></v-icon>
+      />
       <v-checkbox
         :model-value="selected"
         color="primary"
+        density="compact"
+        style="margin: 0 11px 0 1px"
         hide-details
         :ripple="true"
         class="person-checkbox"
         @click.stop
         @change="(e) => handleSelectedChange(e.target.checked)"
       ></v-checkbox>
-    </template>
-    <v-list-item-title>{{ item.title }}</v-list-item-title>
+      <p>{{ item.title }}</p>
+    </v-list-item-title>
+    <p class="contact-phone">{{ item.phone }}</p>
+    <p class="contact-email">{{ item.email }}</p>
   </v-list-item>
 </template>
 
 <script setup lang="ts">
-import { ContactType } from '../models'
+import type { ContactType } from '@/models'
+import AppAvatar from '@/components/Avatar.vue'
 
 interface Props {
   item: ContactType
@@ -47,7 +52,38 @@ function handleSelectedChange(value: boolean) {
 .v-list-item.contact-list-item {
   height: 56px;
   align-items: center;
-  display: flex;
+
+  .v-list-item__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+
+    @media only screen and (max-width: 720px) {
+      grid-template-columns: 1fr 1fr;
+
+      .contact-email {
+        display: none;
+      }
+    }
+
+    @media only screen and (max-width: 520px) {
+      grid-template-columns: 1fr;
+
+      .contact-phone {
+        display: none;
+      }
+    }
+  }
+
+  .v-list-item-title {
+    display: flex;
+    align-items: center;
+
+    .person-checkbox,
+    .person-avatar {
+      flex-grow: 0;
+    }
+  }
 
   &:hover .person-checkbox {
     display: grid;

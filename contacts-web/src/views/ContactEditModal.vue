@@ -4,6 +4,7 @@
     fullscreen
     :scrim="false"
     transition="dialog-bottom-transition"
+    persistent
   >
     <template v-slot:activator="{ props }">
       <v-btn color="primary" dark v-bind="props"> Open Dialog </v-btn>
@@ -20,6 +21,7 @@
         </v-toolbar-items>
       </v-toolbar>
       <v-col>
+        <app-avatar :name="name" :size="100" />
         <v-form @submit.prevent>
           <v-text-field v-model="name" label="Contact Name"></v-text-field>
           <v-select label="Type"></v-select>
@@ -35,10 +37,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import AppAvatar from '@/components/Avatar.vue'
 
-const name = ref<string>('')
+const name = ref<string>('Vinicius Borges')
 
 function handleSave() {
   console.log('save')
+}
+
+function handleClose() {
+  console.log('close')
 }
 </script>
