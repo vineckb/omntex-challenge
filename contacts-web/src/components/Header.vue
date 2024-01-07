@@ -12,8 +12,8 @@
 
         <v-list>
           <v-list-item>
-            <v-list-item-title>Lixeira</v-list-item-title>
-            <v-list-item-title>Configurações</v-list-item-title>
+            <v-list-item-title>Trash</v-list-item-title>
+            <v-list-item-title>Settings</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
