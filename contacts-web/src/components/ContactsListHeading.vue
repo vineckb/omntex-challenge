@@ -21,10 +21,10 @@
         <v-list>
           <v-list-item>
             <v-list-item-title>
-              <v-btn variant="plain" @click="selectAll">Todos</v-btn>
+              <v-btn variant="plain" @click="selectAll">All</v-btn>
             </v-list-item-title>
             <v-list-item-title>
-              <v-btn variant="plain" @click="clearSelection">Nenhum</v-btn>
+              <v-btn variant="plain" @click="clearSelection">None</v-btn>
             </v-list-item-title>
           </v-list-item>
         </v-list>
