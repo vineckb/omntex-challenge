@@ -11,7 +11,7 @@
         <v-btn icon dark @click="() => $router.push('/')">
           <v-icon>mdi-close</v-icon>
         </v-btn>
-        <v-toolbar-title>Edit Contact</v-toolbar-title>
+        <v-toolbar-title>New Contact</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-btn variant="text" @click="handleSave">Save</v-btn>
@@ -40,9 +40,5 @@ const name = ref<string>('Vinicius Borges')
 
 function handleSave() {
   console.log('save')
-}
-
-function handleClose() {
-  console.log('close')
 }
 </script>

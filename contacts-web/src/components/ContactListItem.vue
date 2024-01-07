@@ -44,7 +44,6 @@ const emit = defineEmits(['changeSelected'])
 
 function handleSelectedChange(value: boolean) {
   emit('changeSelected', value)
-  console.log('changeChecked', value, item.id)
 }
 </script>
 
