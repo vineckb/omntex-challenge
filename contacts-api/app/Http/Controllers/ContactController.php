@@ -2,65 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreContactRequest;
-use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        return Contact::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function trashed()
     {
-        //
+        return response()->json(Contact::onlyTrashed()->get());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreContactRequest $request)
+    public function store(Request $request)
     {
-        //
+        $body = $request->all();
+
+        $contact = Contact::create($body);
+
+        return response()->json($contact, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Contact $contact)
     {
-        //
+        return response()->json($contact);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Contact $contact)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->update($request->all());
+
+        return response()->json($contact);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateContactRequest $request, Contact $contact)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->route()->parameter('id');
+        Contact::query()->where('id', $id)->forceDelete();
+        return response()->json(null, 204);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Contact $contact)
+    public function destroyMany(Request $request)
     {
-        //
+        $ids = json_decode($request->input('ids'));
+        Contact::query()->whereIn('id', $ids)->forceDelete();
+        return response()->json(null, 204);
+    }
+
+
+    public function trash(Contact $contact)
+    {
+        $contact->delete();
+        return response()->json(null, 204);
+    }
+
+    public function trashMany(Request $request)
+    {
+        $ids = json_decode($request->input('ids'));
+        Contact::query()->whereIn('id', $ids)->delete();
+        return response()->json(null, 204);
     }
 }

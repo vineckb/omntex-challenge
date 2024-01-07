@@ -7,12 +7,12 @@ export const api = axios.create({
 
 export function fetchContacts(q: string = '') {
   return useQuery('contacts', {
-    queryFn: () => api.get('/persons', { data: { q } })
+    queryFn: () => api.get('/contacts', { data: { q } })
   })
 }
 
 export function trashContacts(ids: string[]) {
   return useMutation({
-    mutationFn: () => api.delete('/persons/trash-many', { data: { ids } })
+    mutationFn: () => api.delete('/contacts/trash-many', { data: { ids } })
   })
 }
