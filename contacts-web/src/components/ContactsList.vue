@@ -31,7 +31,7 @@ interface Props {
 }
 
 const { items } = defineProps<Props>()
-const picking = ref<number[]>([])
+const picking = ref<string[]>([])
 
 function handleChangeSelected(item: ContactType) {
   return (selected: boolean) => {

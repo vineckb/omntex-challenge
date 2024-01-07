@@ -29,19 +29,23 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <p>
+      <p class="selection-text">
         <strong>{{ picking.length }}</strong> contact{{
           picking.length > 1 ? 's' : ''
         }}
         selected
       </p>
+
+      <app-move-to-trash-button :ids="picking" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import AppMoveToTrashButton from '@/components/MoveToTrashButton.vue'
+
 interface Props {
-  picking: number[]
+  picking: string[]
   clearSelection: () => void
   selectAll: () => void
   allSelected: boolean
@@ -59,9 +63,15 @@ const { picking, selectAll, clearSelection } = defineProps<Props>()
 
 .header-actions {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 20px 10px 0;
+}
+
+.selection-text {
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .headings {
