@@ -6,7 +6,7 @@
   >
     <v-list-item-title>
       <app-avatar
-        :name="item.title"
+        :name="item.name"
         :size="30"
         style="margin-right: 10px"
         class="person-avatar"
@@ -20,9 +20,9 @@
         :ripple="true"
         class="person-checkbox"
         @click.stop
-        @change="(e) => handleSelectedChange(e.target.checked)"
+        @change="(e: any) => handleSelectedChange(e.target.checked)"
       ></v-checkbox>
-      <p>{{ item.title }}</p>
+      <p>{{ item.name }}</p>
     </v-list-item-title>
     <p class="contact-phone">{{ item.phone }}</p>
     <p class="contact-email">{{ item.email }}</p>
@@ -40,6 +40,7 @@ interface Props {
 
 const { item } = defineProps<Props>()
 
+console.log(item)
 const emit = defineEmits(['changeSelected'])
 
 function handleSelectedChange(value: boolean) {

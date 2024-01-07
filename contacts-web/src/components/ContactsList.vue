@@ -3,10 +3,13 @@
     :picking="picking"
     :selectAll="selectAll"
     :clearSelection="clearSelection"
-    :allSelected="items.length === picking.length"
+    :allSelected="items?.length === picking.length"
   />
 
-  <v-list :class="'persons-list' + (!!picking.length ? ' picking' : '')">
+  <v-list
+    v-if="items && items.length"
+    :class="'persons-list' + (!!picking.length ? ' picking' : '')"
+  >
     <contact-list-item
       v-for="(item, index) in items"
       :key="index"
@@ -24,7 +27,7 @@ import AppContactsListHeading from '@/components/ContactsListHeading.vue'
 import { ref } from 'vue'
 
 interface Props {
-  items: ContactType[]
+  items?: ContactType[]
 }
 
 const { items } = defineProps<Props>()
@@ -47,7 +50,7 @@ function handleChangeSelected(item: ContactType) {
 }
 
 function selectAll() {
-  picking.value = items.map((item) => item.id)
+  picking.value = items?.map((item) => item.id) || []
 }
 
 function clearSelection() {

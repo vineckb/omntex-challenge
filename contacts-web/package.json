@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "axios": "^1.6.5",
     "vue": "^3.3.11",
     "vue-material": "^1.0.0-beta-16",
+    "vue-query": "^1.26.0",
     "vue-router": "^4.2.5",
     "vue3-material": "^1.0.8",
     "vuetify": "^3.4.9"

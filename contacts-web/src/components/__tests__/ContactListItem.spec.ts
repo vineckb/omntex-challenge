@@ -8,7 +8,7 @@ describe('ContactListItem', () => {
       props: {
         item: {
           id: 1,
-          title: 'John Doe',
+          name: 'John Doe',
           phone: '123-456-7890',
           email: 'john.doe@example.com'
         },
@@ -28,7 +28,7 @@ describe('ContactListItem', () => {
       props: {
         item: {
           id: 1,
-          title: 'John Doe',
+          name: 'John Doe',
           phone: '123-456-7890',
           email: 'john.doe@example.com'
         },
@@ -51,7 +51,7 @@ describe('ContactListItem', () => {
       props: {
         item: {
           id: 1,
-          title: 'John Doe',
+          name: 'John Doe',
           phone: '123-456-7890',
           email: 'john.doe@example.com'
         },
