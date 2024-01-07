@@ -51,4 +51,16 @@ describe('Avatar', () => {
     expect(icon.exists()).toBe(true)
     expect(icon.attributes('icon')).toBe('mdi-account')
   })
+
+  it('not renders icon when name is provided', () => {
+    const wrapper = mount(Avatar, {
+      props: {
+        size: 100,
+        name: undefined
+      }
+    })
+
+    const icon = wrapper.find('v-icon')
+    expect(icon.exists()).toBe(false)
+  })
 })

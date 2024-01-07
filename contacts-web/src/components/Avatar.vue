@@ -4,7 +4,7 @@
     <span v-if="name" :style="`font-size: ${size / 3 || 33}px`">{{
       initials
     }}</span>
-    <span n-if="!name">
+    <span v-if="!name">
       <v-icon :size="size * 0.7" icon="mdi-account"></v-icon>
     </span>
   </v-avatar>
