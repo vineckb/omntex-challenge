@@ -38,4 +38,17 @@ describe('Avatar', () => {
 
     expect(span.element.style.fontSize).toBe(expectedFontSize)
   })
+
+  it('renders icon when name is not provided', () => {
+    const wrapper = mount(Avatar, {
+      props: {
+        size: 100,
+        name: undefined
+      }
+    })
+
+    const icon = wrapper.find('v-icon')
+    expect(icon.exists()).toBe(true)
+    expect(icon.attributes('icon')).toBe('mdi-account')
+  })
 })
