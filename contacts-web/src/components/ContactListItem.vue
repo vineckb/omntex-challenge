@@ -36,18 +36,18 @@ import { useContactsStore } from '@/stores/contacts'
 
 interface Props {
   item: ContactType
-  selected: boolean
 }
 
 const { item } = defineProps<Props>()
 
-const store = useContactsStore()
+const { picking, add, remove } = useContactsStore()
+const selected = !!picking.find((id) => item.id === id)
 
 function handleSelectedChange(value: boolean) {
   if (value) {
-    store.add(item.id)
+    add(item.id)
   } else {
-    store.remove(item.id)
+    remove(item.id)
   }
 }
 </script>

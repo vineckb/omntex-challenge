@@ -12,7 +12,6 @@
       v-for="(item, index) in items"
       :key="index"
       :item="item"
-      :selected="!!picking.find((id) => item.id === id)"
     />
   </v-list>
 </template>
