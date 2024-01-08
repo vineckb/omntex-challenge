@@ -45,12 +45,11 @@ describe('ContactListItem', () => {
       }
     })
 
-    // Simulate a checkbox change
     const checkbox = await wrapper.find('.person-checkbox')
+    // @ts-ignore
     checkbox.element.checked = true
     checkbox.trigger('change')
 
-    // Check if the event was emitted with the correct value
     expect(store.add).toHaveBeenCalledWith('random-id')
   })
 
