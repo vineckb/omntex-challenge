@@ -4,8 +4,8 @@
 
     <v-main v-if="!isLoading">
       <app-contacts-list :items="data.data as unknown as ContactType[]" />
+      <app-new-contact-fab />
     </v-main>
-    <app-new-contact-fab />
   </v-layout>
   <router-view></router-view>
 </template>

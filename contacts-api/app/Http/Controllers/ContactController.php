@@ -47,7 +47,7 @@ class ContactController extends Controller
 
     public function destroyMany(Request $request)
     {
-        $ids = json_decode($request->input('ids'));
+        $ids = $request->input('ids');
         Contact::query()->whereIn('id', $ids)->forceDelete();
         return response()->json(null, 204);
     }
@@ -61,7 +61,7 @@ class ContactController extends Controller
 
     public function trashMany(Request $request)
     {
-        $ids = json_decode($request->input('ids'));
+        $ids = $request->input('ids');
         Contact::query()->whereIn('id', $ids)->delete();
         return response()->json(null, 204);
     }

@@ -1,9 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-avatar color="brown" :size="size || 100">
-    <span v-if="name" :style="`font-size: ${size / 3 || 33}px`">{{
-      initials
-    }}</span>
+    <span v-if="name" :style="`font-size: ${size / 3 || 33}px`">
+      {{ getInitials(name) }}
+    </span>
     <span v-if="!name">
       <v-icon :size="size * 0.7" icon="mdi-account"></v-icon>
     </span>
@@ -19,5 +19,4 @@ interface Props {
 }
 
 const { name, size } = defineProps<Props>()
-const initials = name ? getInitials(name) : ''
 </script>

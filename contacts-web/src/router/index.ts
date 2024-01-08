@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ContactEditModal from '@/views/ContactEditModal.vue'
+import EditContactModal from '@/views/EditContactModal.vue'
+import CreateContactModal from '@/views/CreateContactModal.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +13,11 @@ const router = createRouter({
       children: [
         {
           path: 'contact/:id',
-          component: ContactEditModal
+          component: EditContactModal
+        },
+        {
+          path: '/new',
+          component: CreateContactModal
         }
       ]
     }

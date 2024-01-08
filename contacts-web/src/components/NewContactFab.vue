@@ -1,5 +1,10 @@
 <template>
-  <v-btn icon="mdi-plus" class="fab" color="primary"></v-btn>
+  <v-btn
+    icon="mdi-plus"
+    class="fab"
+    color="primary"
+    @click="$router.push('/new')"
+  ></v-btn>
 </template>
 
 <style scoped>
@@ -7,5 +12,7 @@
   position: fixed !important;
   bottom: 20px;
   right: 20px;
+  text-decoration: none !important;
+  cursor: pointer;
 }
 </style>

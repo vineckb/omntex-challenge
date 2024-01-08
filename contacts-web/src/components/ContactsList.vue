@@ -1,9 +1,7 @@
 <template>
   <app-contacts-list-heading
     :picking="picking"
-    :selectAll="selectAll"
-    :clearSelection="clearSelection"
-    :allSelected="items?.length === picking.length"
+    :ids="items?.map((item) => item.id)"
   />
 
   <v-list
@@ -15,7 +13,6 @@
       :key="index"
       :item="item"
       :selected="!!picking.find((id) => item.id === id)"
-      @changeSelected="(v) => handleChangeSelected(item)(v)"
     />
   </v-list>
 </template>
@@ -24,38 +21,15 @@
 import type { ContactType } from '@/models'
 import ContactListItem from './ContactListItem.vue'
 import AppContactsListHeading from '@/components/ContactsListHeading.vue'
-import { ref } from 'vue'
+import { useContactsStore } from '@/stores/contacts'
 
 interface Props {
   items?: ContactType[]
 }
 
 const { items } = defineProps<Props>()
-const picking = ref<string[]>([])
-
-function handleChangeSelected(item: ContactType) {
-  return (selected: boolean) => {
-    if (selected) {
-      if (picking.value.find((id) => id == item.id)) return
-
-      picking.value.push(item.id)
-    } else {
-      const index = picking.value.findIndex((id) => item.id == id)
-
-      if (index < 0) return
-
-      picking.value.splice(index, 1)
-    }
-  }
-}
-
-function selectAll() {
-  picking.value = items?.map((item) => item.id) || []
-}
-
-function clearSelection() {
-  picking.value = []
-}
+const { picking, setIds } = useContactsStore()
+setIds(items?.map((i) => i.id) || [])
 </script>
 
 <style>

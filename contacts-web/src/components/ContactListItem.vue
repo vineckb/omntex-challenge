@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import type { ContactType } from '@/models'
 import AppAvatar from '@/components/Avatar.vue'
+import { useContactsStore } from '@/stores/contacts'
 
 interface Props {
   item: ContactType
@@ -40,11 +41,14 @@ interface Props {
 
 const { item } = defineProps<Props>()
 
-console.log(item)
-const emit = defineEmits(['changeSelected'])
+const store = useContactsStore()
 
 function handleSelectedChange(value: boolean) {
-  emit('changeSelected', value)
+  if (value) {
+    store.add(item.id)
+  } else {
+    store.remove(item.id)
+  }
 }
 </script>
 
