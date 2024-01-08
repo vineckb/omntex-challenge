@@ -52,11 +52,11 @@ describe('Avatar', () => {
     expect(icon.attributes('icon')).toBe('mdi-account')
   })
 
-  it('not renders icon when name is provided', () => {
+  it('not renders initials when name is provided', () => {
     const wrapper = mount(Avatar, {
       props: {
         size: 100,
-        name: undefined
+        name: 'Jhon Doe'
       }
     })
 
