@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import type { ContactType } from '@/models'
-import ContactListItem from './ContactListItem.vue'
+import ContactListItem from './ContactListItem/index.vue'
 import AppContactsListHeading from '@/components/ContactsListHeading.vue'
 import { useContactsStore } from '@/stores/contacts'
 

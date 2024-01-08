@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-list-item
     class="contact-list-item"
@@ -31,7 +32,7 @@
 
 <script setup lang="ts">
 import type { ContactType } from '@/models'
-import AppAvatar from '@/components/Avatar.vue'
+import AppAvatar from '@/components/Avatar/index.vue'
 import { useContactsStore } from '@/stores/contacts'
 
 interface Props {

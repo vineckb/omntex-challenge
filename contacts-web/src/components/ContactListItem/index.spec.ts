@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
-import ContactListItem from '@/components/ContactListItem.vue'
+import ContactListItem from './index.vue'
 import { createTestingPinia } from '@pinia/testing'
 import { useContactsStore } from '@/stores/contacts'
 
