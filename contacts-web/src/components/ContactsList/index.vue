@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <app-contacts-list-heading
     :picking="picking"
@@ -18,7 +19,7 @@
 
 <script setup lang="ts">
 import type { ContactType } from '@/models'
-import ContactListItem from './ContactListItem/index.vue'
+import ContactListItem from '@/components/ContactListItem/index.vue'
 import AppContactsListHeading from '@/components/ContactsListHeading.vue'
 import { useContactsStore } from '@/stores/contacts'
 
